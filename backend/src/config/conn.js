@@ -1,6 +1,6 @@
-const { Sequelize } = require('sequelize');
+import { Sequelize } from "sequelize";
 
-const sequelize = new Sequelize({
-  dialect: 'sqlite',
-  storage: 'path/to/database.sqlite'
-});
+export const conn = new Sequelize("portfolio_integrado","root","123456789", {
+    host: "localhost",
+    dialect: "mysql"
+})
