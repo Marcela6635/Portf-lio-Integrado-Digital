@@ -1,6 +1,10 @@
 import express from "express";
 import cors from "cors";
 
+import secaoRoutes from "./routes/secaoRoutes.js";
+import registroRoutes from "./routes/registroRoutes.js";
+import materialRoutes from "./routes/materialRoutes.js";
+
 const app = express();
 
 app.use(
@@ -14,7 +18,9 @@ app.use(
 app.use(express.json());
 
 //Routes
-// app.use("/usuarios", usuarioRoutes)
+app.use("/secoes", secaoRoutes);
+app.use("/registros", registroRoutes);
+app.use("/materiais", materialRoutes);
 
 app.use((request, response) => {
   response.status(404).json({ message: "Rota não encontrada" });
