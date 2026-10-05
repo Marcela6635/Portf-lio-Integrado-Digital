@@ -1,4 +1,6 @@
 import { secaoModel } from "../models/secaoModel.js";
+import { registroModel } from "../models/registroModel.js";
+import { materialModel } from "../models/materialModel.js";
 
 export const cadastrarSecao = async (req, res) => {
   try {
@@ -35,7 +37,12 @@ export const buscarSecaoPorId = async (req, res) => {
   try {
     const { id } = req.params;
 
-    const secao = await secaoModel.findByPk(id);
+    const secao = await secaoModel.findByPk(id, {
+      include: {
+        model: registroModel,
+        include: materialModel
+      },
+    });
 
     if (!secao) {
       return res.status(404).json({

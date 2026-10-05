@@ -1,4 +1,5 @@
 import { materialModel } from "../models/materialModel.js";
+import { registroModel } from "../models/registroModel.js";
 
 export const cadastrarMaterial = async (req, res) => {
   try {

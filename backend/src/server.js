@@ -1,3 +1,4 @@
+import "./models/index.js"
 import app from "./app.js";
 import { conn } from "./config/conn.js";
 

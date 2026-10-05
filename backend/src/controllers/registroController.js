@@ -1,4 +1,5 @@
 import { registroModel } from "../models/registroModel.js";
+import { materialModel } from "../models/materialModel.js";
 
 export const cadastrarRegistro = async (req, res) => {
   try {
@@ -36,7 +37,9 @@ export const buscarRegistroPorId = async (req, res) => {
   try {
     const { id } = req.params;
 
-    const registro = await registroModel.findByPk(id);
+    const registro = await registroModel.findByPk(id, {
+        include: materialModel,
+    });
 
     if (!registro) {
       return res.status(404).json({
