@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 
+import usuarioRoutes from "./routes/usuarioRoutes.js";
 import secaoRoutes from "./routes/secaoRoutes.js";
 import registroRoutes from "./routes/registroRoutes.js";
 import materialRoutes from "./routes/materialRoutes.js";
@@ -18,6 +19,7 @@ app.use(
 app.use(express.json());
 
 //Routes
+app.use("/usuario", usuarioRoutes);
 app.use("/secoes", secaoRoutes);
 app.use("/registros", registroRoutes);
 app.use("/materiais", materialRoutes);

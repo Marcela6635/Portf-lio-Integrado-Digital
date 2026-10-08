@@ -1,6 +1,15 @@
+import { usuarioModel } from "./usuarioModel.js";
 import { secaoModel } from "./secaoModel.js";
 import { registroModel } from "./registroModel.js";
 import { materialModel } from "./materialModel.js";
+
+usuarioModel.hasMany(secaoModel, {
+  foreignKey: "usuario_id",
+});
+
+secaoModel.belongsTo(usuarioModel, {
+  foreignKey: "usuario_id",
+});
 
 secaoModel.hasMany(registroModel, {
   foreignKey: "secao_id",
@@ -18,4 +27,4 @@ materialModel.belongsTo(registroModel, {
   foreignKey: "registro_id",
 });
 
-export { secaoModel, registroModel, materialModel, };
+export { usuarioModel, secaoModel, registroModel, materialModel, };

@@ -17,9 +17,13 @@ export const registroModel = conn.define(
       type: DataTypes.TEXT,
       allowNull: false,
     },
+    bimestre: {
+      type: DataTypes.ENUM("1","2","3","4"),
+      allowNull: true,
+    },
     secao_id: {
-        type: DataTypes.UUID,
-        allowNull: false
+      type: DataTypes.UUID,
+      allowNull: false
     },
   },
   {
