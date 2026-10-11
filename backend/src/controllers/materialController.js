@@ -53,3 +53,58 @@ export const buscarMaterialPorId = async (req, res) => {
     });
   }
 };
+
+export const atualizarMaterial = async (req, res) => {
+    try {
+    const { id } = req.params;
+    const { tipo, url, registro_id } = req.body;
+
+    const material = await materialModel.findByPk(id);
+
+    if (!material) {
+      return res.status(404).json({
+        mensagem: "Material não encontrado"
+      });
+    }
+
+    await material.update({
+     tipo,
+     url,
+     registro_id,
+    });
+
+    return res.status(200).json(material);
+
+  } catch (error) {
+    return res.status(500).json({
+      mensagem: "Erro ao atualizar o material",
+      erro: error.message
+    });
+  }
+};
+
+export const deletarMaterial = async (req, res) => {
+   try {
+    const { id } = req.params;
+
+    const material = await materialModel.findByPk(id);
+
+    if (!material) {
+      return res.status(404).json({
+        mensagem: "Material não encontrado"
+      });
+    }
+
+    await material.destroy();
+
+    return res.status(200).json({
+      mensagem: "Material excluído com sucesso"
+    });
+
+  } catch (error) {
+    return res.status(500).json({
+      mensagem: "Erro ao excluir o material",
+      erro: error.message
+    });
+  }
+};

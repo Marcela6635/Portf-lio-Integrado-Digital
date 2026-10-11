@@ -19,7 +19,7 @@ app.use(
 app.use(express.json());
 
 //Routes
-app.use("/usuario", usuarioRoutes);
+app.use("/usuarios", usuarioRoutes);
 app.use("/secoes", secaoRoutes);
 app.use("/registros", registroRoutes);
 app.use("/materiais", materialRoutes);
