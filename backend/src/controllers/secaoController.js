@@ -4,9 +4,11 @@ import { materialModel } from "../models/materialModel.js";
 
 export const cadastrarSecao = async (req, res) => {
   try {
-      const { nome, area_unidade, periodo, origem, usuario_id } = req.body;
+      const { nome, area_unidade, periodo, origem } = req.body;
 
-      if (!nome || !area_unidade || !periodo || !origem || !usuario_id) {
+      const usuario_id = req.usuario.id;
+
+      if (!nome || !area_unidade || !periodo || !origem) {
         return res.status(400).json({
           mensagem: "Preencha todos os campos obrigatórios."
         });
@@ -35,10 +37,10 @@ export const cadastrarSecao = async (req, res) => {
       return res.status(201).json(novaSecao);
 
   } catch (error) {
-      console.error("Erro ao criar seção:", error);
+      console.error("Erro ao cadastrar seção:", error);
 
       return res.status(500).json({
-        mensagem: "Erro ao criar a seção."
+        mensagem: "Erro ao cadastrar a seção."
       });
   }
 };

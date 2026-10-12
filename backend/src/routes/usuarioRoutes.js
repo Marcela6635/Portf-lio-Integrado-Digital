@@ -12,6 +12,11 @@ const router = Router();
 
 router.post("/", autenticar, cadastrarUsuario);
 router.post("/login", loginUsuario);
+router.get("/verificar", autenticar, (req, res) => {
+  return res.status(200).json({
+    autenticado: true
+  });
+});
 router.get("/", listarUsuarios);
 router.get("/:id", autenticar, buscarUsuarioPorId);
 
