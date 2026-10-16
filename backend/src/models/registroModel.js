@@ -21,6 +21,11 @@ export const registroModel = conn.define(
       type: DataTypes.ENUM("1º","2º","3º","4º"),
       allowNull: true,
     },
+    destaque: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false
+    },
     secao_id: {
       type: DataTypes.UUID,
       allowNull: false

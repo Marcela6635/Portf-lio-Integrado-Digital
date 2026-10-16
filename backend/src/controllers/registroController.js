@@ -3,12 +3,13 @@ import { materialModel } from "../models/materialModel.js";
 
 export const cadastrarRegistro = async (req, res) => {
   try {
-    const { titulo, conteudo, bimestre, secao_id } = req.body;
+    const { titulo, conteudo, bimestre, destaque, secao_id } = req.body;
 
     const novoRegistro = await registroModel.create({
       titulo,
       conteudo,
       bimestre,
+      destaque: destaque === true,
       secao_id
     });
 
@@ -83,7 +84,7 @@ export const buscarRegistroPorId = async (req, res) => {
 export const atualizarRegistro = async (req, res) => {
   try {
     const { id } = req.params;
-    const { titulo, conteudo, bimestre, secao_id } = req.body;
+    const { titulo, conteudo, bimestre, destaque, secao_id } = req.body;
 
     const registro = await registroModel.findByPk(id);
 
@@ -97,6 +98,7 @@ export const atualizarRegistro = async (req, res) => {
       titulo,
       conteudo,
       bimestre,
+      destaque: req.body.destaque,
       secao_id
     });
 
