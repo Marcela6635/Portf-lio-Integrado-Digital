@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import BotaoVoltar from "../components/BotaoVoltar";
 
 function CadastrarMaterial() {
   const navigate = useNavigate();
@@ -137,6 +138,8 @@ function CadastrarMaterial() {
 
   return (
     <main className="pagina-login">
+      <div className="form-page-stack">
+        <BotaoVoltar destino="/admin/materiais" />
       <form className="form-login" onSubmit={cadastrar}>
         <h1>Cadastrar Material</h1>
 
@@ -210,10 +213,8 @@ function CadastrarMaterial() {
 
         {mensagem && <p>{mensagem}</p>}
 
-        <Link to="/admin">
-          Voltar ao painel
-        </Link>
       </form>
+      </div>
     </main>
   );
 }

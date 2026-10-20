@@ -1,5 +1,16 @@
+
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import BotaoVoltar from "../components/BotaoVoltar";
+import {
+  BookOpen,
+  FlaskConical,
+  Earth,
+  Calculator,
+  Code,
+  Laptop,
+  FolderOpen
+} from "lucide-react";
 
 function Secao({ origem }) {
   const { area } = useParams();
@@ -41,73 +52,105 @@ function Secao({ origem }) {
     (secao) => secao.area_unidade === area
   );
 
+  // ÍCONES DAS ÁREAS
+  function escolherIcone(nome) {
+    const texto = nome.toLowerCase();
+
+    if (texto.includes("linguagens")) return <BookOpen />;
+    if (texto.includes("natureza")) return <FlaskConical />;
+    if (texto.includes("humanas")) return <Earth />;
+    if (texto.includes("matemática")) return <Calculator />;
+    if (texto.includes("front")) return <Laptop />;
+    if (texto.includes("programação")) return <Code />;
+
+    return <FolderOpen />;
+  }
+
   if (carregando) {
     return <p>Carregando...</p>;
   }
 
   return (
-    <main className="portfolio">
-      {area ? (
-        <>
-          <h1>{area}</h1>
-          <h2>Seções do portfólio</h2>
+    <main className="pagina-areas">
+      <div className="areas-container">
 
-          <div className="opcoes">
-            {secoesFiltradas.map((secao) => (
+        <div className="page-back-row">
+          <BotaoVoltar
+            destino={area ? `/${origem.toLowerCase()}` : "/"}
+          />
+        </div>
+
+        {area ? (
+          <>
+            <div className="areas-cabecalho">
+              <span className="areas-etiqueta">{origem}</span>
+              <h1>{area}</h1>
+              <p>Escolha uma seção para visualizar os registros:</p>
+            </div>
+
+            <div className="areas-grid">
+              {secoesFiltradas.map((secao) => (
                 <Link
-                    to={`/registros/${secao.id}`}
-                    className="cartao link-cartao"
-                    key={secao.id}
+                  to={`/registros/${secao.id}`}
+                  className="area-card"
+                  key={secao.id}
                 >
-                    <h3>{secao.nome}</h3>
-                    <p>Período: {secao.periodo}</p>
+                  <div className="area-icone">
+                    <FolderOpen size={36} strokeWidth={1.5} />
+                  </div>
+
+                  <h3>{secao.nome}</h3>
+                  <p>Período: {secao.periodo}</p>
                 </Link>
-            ))}
-          </div>
+              ))}
+            </div>
 
-          {secoesFiltradas.length === 0 && (
-            <p>Nenhuma seção cadastrada nesta área.</p>
-          )}
+            {secoesFiltradas.length === 0 && (
+              <p>Nenhuma seção cadastrada nesta área.</p>
+            )}
+          </>
+        ) : (
+          <>
+            <div className="areas-cabecalho">
+              <div className="areas-titulo">
+                <h1>
+                  {origem === "SESI"
+                    ? "Áreas do Conhecimento"
+                    : "Unidades Curriculares"}
+                </h1>
 
-          <Link to={`/${origem.toLowerCase()}`}>
-            Voltar para áreas
-          </Link>
-        </>
-      ) : (
-        <>
-          <h1>Portfólio {origem}</h1>
+                <span className="areas-etiqueta">{origem}</span>
+              </div>
 
-          <h2>
-            {origem === "SESI"
-              ? "Áreas do conhecimento"
-              : "Unidades curriculares"}
-          </h2>
+              <p>
+                {origem === "SESI"
+                  ? "Escolha uma área para visualizar os registros:"
+                  : "Escolha uma unidade curricular para explorar:"}
+              </p>
+            </div>
 
-          <div className="opcoes">
-            {areas.map((nomeArea) => (
-              <Link
-                to={`/${origem.toLowerCase()}/${encodeURIComponent(nomeArea)}`}
-                className="cartao link-cartao"
-                key={nomeArea}
-              >
-                <h3>{nomeArea}</h3>
-                <p>
-                  {
-                    secoes.filter(
-                      (secao) => secao.area_unidade === nomeArea
-                    ).length
-                  }{" "}
-                  seções cadastradas
-                </p>
-              </Link>
-            ))}
-          </div>
+            <div className="areas-grid">
+              {areas.map((nomeArea) => (
+                <Link
+                  to={`/${origem.toLowerCase()}/${encodeURIComponent(nomeArea)}`}
+                  className="area-card"
+                  key={nomeArea}
+                >
+                  <div className="area-icone">
+                    {escolherIcone(nomeArea)}
+                  </div>
 
-          {areas.length === 0 && (
-            <p>Nenhuma área ou unidade cadastrada.</p>
-          )}
-        </>
-      )}
+                  <h3>{nomeArea}</h3>
+                </Link>
+              ))}
+            </div>
+
+            {areas.length === 0 && (
+              <p>Nenhuma área ou unidade cadastrada.</p>
+            )}
+          </>
+        )}
+      </div>
     </main>
   );
 }

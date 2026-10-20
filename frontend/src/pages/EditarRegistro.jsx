@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import BotaoVoltar from "../components/BotaoVoltar";
 
 function EditarRegistro() {
   const { id } = useParams();
@@ -9,6 +10,7 @@ function EditarRegistro() {
   const [conteudo, setConteudo] = useState("");
   const [secao_id, setSecaoId] = useState("");
   const [bimestre, setBimestre] = useState("");
+  const [destaque, setDestaque] = useState(false);
   const [secoes, setSecoes] = useState([]);
   const [carregando, setCarregando] = useState(true);
   const [mensagem, setMensagem] = useState("");
@@ -32,6 +34,7 @@ function EditarRegistro() {
         setConteudo(registro.conteudo);
         setSecaoId(registro.secao_id);
         setBimestre(registro.bimestre || "");
+        setDestaque(Boolean(registro.destaque));
         setSecoes(listaSecoes);
       } catch (erro) {
         setMensagem(erro.message);
@@ -74,6 +77,7 @@ function EditarRegistro() {
             titulo,
             conteudo,
             secao_id,
+            destaque,
             bimestre: bimestral ? bimestre : null
           })
         }
@@ -97,6 +101,8 @@ function EditarRegistro() {
 
   return (
     <main className="pagina-login">
+      <div className="form-page-stack">
+        <BotaoVoltar destino="/admin/registros" />
       <form className="form-login" onSubmit={salvarAlteracoes}>
         <h1>Editar Registro</h1>
 
@@ -150,10 +156,21 @@ function EditarRegistro() {
           </>
         )}
 
+        <label className="campo-destaque">
+          <input
+            type="checkbox"
+            checked={destaque}
+            onChange={(e) => setDestaque(e.target.checked)}
+          />
+
+          Exibir este projeto em destaque no Portfólio
+        </label>
+
         <button type="submit">Salvar alterações</button>
 
         {mensagem && <p>{mensagem}</p>}
       </form>
+      </div>
     </main>
   );
 }

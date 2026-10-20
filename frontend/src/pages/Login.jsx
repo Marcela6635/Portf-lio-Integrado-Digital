@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import BotaoVoltar from "../components/BotaoVoltar";
 
 function Login() {
   const navigate = useNavigate();
@@ -37,7 +38,7 @@ function Login() {
       }
 
       sessionStorage.setItem("token", dados.token);
-      
+
       window.dispatchEvent(new Event("auth-change"));
 
       navigate("/admin");
@@ -51,35 +52,39 @@ function Login() {
 
   return (
     <main className="pagina-login">
-      <form className="form-login" onSubmit={fazerLogin}>
-        <h1>Login Administrativo</h1>
+      <div className="form-page-stack">
+        <BotaoVoltar destino="/" />
 
-        <p>Acesse o painel do MARÉ</p>
+        <form className="form-login" onSubmit={fazerLogin}>
+          <h1>Login Administrativo</h1>
 
-        <label htmlFor="email">E-mail</label>
-        <input
-          id="email"
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
+          <p>Acesse o painel do MARÉ</p>
 
-        <label htmlFor="senha">Senha</label>
-        <input
-          id="senha"
-          type="password"
-          value={senha}
-          onChange={(e) => setSenha(e.target.value)}
-          required
-        />
+          <label htmlFor="email">E-mail</label>
+          <input
+            id="email"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
 
-        {erro && <p className="erro-login">{erro}</p>}
+          <label htmlFor="senha">Senha</label>
+          <input
+            id="senha"
+            type="password"
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
+            required
+          />
 
-        <button type="submit" disabled={carregando}>
-          {carregando ? "Entrando..." : "Entrar"}
-        </button>
-      </form>
+          {erro && <p className="erro-login">{erro}</p>}
+
+          <button type="submit" disabled={carregando}>
+            {carregando ? "Entrando..." : "Entrar"}
+          </button>
+        </form>
+        </div>
     </main>
   );
 }

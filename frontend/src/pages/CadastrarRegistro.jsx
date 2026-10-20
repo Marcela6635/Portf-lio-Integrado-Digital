@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import BotaoVoltar from "../components/BotaoVoltar";
 
 function CadastrarRegistro() {
   const navigate = useNavigate();
@@ -7,6 +8,7 @@ function CadastrarRegistro() {
   const [titulo, setTitulo] = useState("");
   const [conteudo, setConteudo] = useState("");
   const [bimestre, setBimestre] = useState("");
+  const [destaque, setDestaque] = useState(false);
   const [secao_id, setSecaoId] = useState("");
   const [secoes, setSecoes] = useState([]);
   const [mensagem, setMensagem] = useState("");
@@ -60,6 +62,7 @@ function CadastrarRegistro() {
           titulo,
           conteudo,
           bimestre: bimestral ? bimestre : null,
+          destaque,
           secao_id
         })
       });
@@ -83,6 +86,8 @@ function CadastrarRegistro() {
 
   return (
     <main className="pagina-login">
+      <div className="form-page-stack">
+        <BotaoVoltar destino="/admin/registros" />
       <form className="form-login" onSubmit={cadastrar}>
         <h1>Cadastrar Registro</h1>
 
@@ -136,12 +141,21 @@ function CadastrarRegistro() {
           </>
         )}
 
+        <label className="campo-destaque">
+          <input
+            type="checkbox"
+            checked={destaque}
+            onChange={(e) => setDestaque(e.target.checked)}
+          />
+          Exibir este projeto em destaque no Portfólio
+        </label>
+
         <button type="submit">Cadastrar registro</button>
 
         {mensagem && <p>{mensagem}</p>}
 
-        <Link to="/admin">Voltar ao painel</Link>
       </form>
+      </div>
     </main>
   );
 }

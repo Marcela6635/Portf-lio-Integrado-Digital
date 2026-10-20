@@ -1,113 +1,360 @@
+/*01. CONFIGURAÇÕES GERAIS — fundo, fontes e box-sizing */
+
+*, *::before, *::after { box-sizing: border-box; }
+
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f5f5f5;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #FEF3F5;
   color: #222;
 }
 
-.cabecalho {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
-  background-color: white;
-}
-
-.cabecalho nav {
-  display: flex;
-  gap: 20px;
-}
-
-.cabecalho a {
-  text-decoration: none;
-  color: #222;
-}
-
-.apresentacao {
-  padding: 80px 20px;
-  text-align: center;
-}
-
-.apresentacao p {
-  max-width: 650px;
-  margin: 15px auto;
-  line-height: 1.6;
-}
-
-.portfolio {
-  padding: 40px 20px;
-  text-align: center;
-}
-
-.opcoes {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 30px;
-  margin-top: 30px;
-}
-
-.cartao {
-  width: 280px;
-  padding: 30px;
-  background-color: white;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-}
-
-.cartao button {
-  padding: 12px 20px;
-  border: none;
-  border-radius: 6px;
-  background-color: #333;
-  color: white;
-  cursor: pointer;
-}
-
-.cartao button:hover {
-  background-color: #555;
+h1, h2, h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(42px, 5vw, 64px);
+  font-weight: 600;
+  line-height: 1.1;
 }
 
 .botao {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  margin-top: 20px;
   padding: 12px 20px;
-  border-radius: 6px;
-  background-color: #333;
-  color: white;
+
+  background-color: #F96897;
+  color: #FFFFFF;
+
+  border: none;
+  border-radius: 8px;
+
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+
   text-decoration: none;
+  cursor: pointer;
+
+  transition: 0.2s ease;
 }
 
 .botao:hover {
-  background-color: #555;
+  background-color: #E94C80;
+  color: #FFFFFF;
+  transform: translateY(-2px);
 }
 
-.link-cartao {
-  display: block;
-  text-decoration: none;
-  color: inherit;
-  cursor: pointer;
-}
+/* 02. HEADER — logo, navegação e aba ativa */
 
-.link-cartao:hover {
-  background-color: #eeeeee;
-}
-
-.grupo-bimestre {
-  margin: 40px auto;
-  max-width: 1000px;
-}
-
-.grupo-bimestre h2 {
-  margin-bottom: 20px;
-}
-
-.imagem-material,
-.video-material {
+.header-container {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
   width: 100%;
-  max-width: 600px;
-  height: auto;
-  border-radius: 8px;
+  min-height: 90px;
+  padding: 15px 4%;
+  background: #FDD5E2;
 }
+
+.header-logo h2 {
+  color: #2C4D8A;
+  margin: 0;
+}
+
+.header-logo span{
+  font-size: 11px;
+  color: #6B7280;
+}
+
+.header-links nav{
+  justify-self: center;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.header-links a{
+  text-decoration: none;
+  margin: 10px;
+  color: #2C4D8A;
+  font-size: 16px;
+  font-weight: 500;
+  padding-bottom: 7px;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.header-links a:hover{
+  color: #F96897;
+}
+
+.header-links a.link-ativo{
+  color: #F96897;
+  border-bottom-color: #F96897;
+  font-weight: 600;
+}
+
+.header-container .icone-login {
+  justify-self: end;
+}
+
+.icone-usuario {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.icone-usuario:hover {
+  background-color: #e5e5e5;
+  transform: scale(1.05);
+}
+
+.usuario-logado {
+  background-color: #F96897;
+  color: white;
+  border-color: #F96897;
+}
+
+/* 03. HOME — apresentação */
+
+.apresentacao {
+  padding: 45px 6% 35px;
+  background-color: #FEF3F5;
+}
+
+.apresentacao-container {
+  max-width: 1150px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  align-items: center;
+  gap: 50px;
+}
+
+
+.apresentacao-texto {
+  text-align: left;
+}
+
+.apresentacao-etiqueta {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: #F96897;
+}
+
+.apresentacao h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.1;
+  margin: 12px 0 15px;
+  color: #222;
+}
+
+.apresentacao h1 span {
+  display: block;
+  color: #F96897;
+  font-weight: 700;
+}
+
+.apresentacao p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #333;
+  max-width: 520px;
+  margin: 0 0 20px;
+}
+
+.botao-apresentacao {
+  display: inline-flex;
+  align-items: center;
+  gap: 25px;
+  padding: 11px 22px;
+  background-color: #F96897;
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  transition: 0.2s;
+}
+.botao-apresentacao:hover {
+  background-color: #E64F86;
+  transform: translateY(-2px);
+}
+
+.apresentacao-foto {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.foto-moldura {
+  width: 280px;
+  height: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #FFE2EC;
+  border: 7px solid #F9A7C3;
+  border-radius: 45% 55% 60% 40% / 50% 40% 60% 50%;
+  color: #D85B8B;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+}
+
+.foto-moldura {
+  overflow: hidden;
+}
+
+.foto-moldura img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .apresentacao {
+    padding: 35px 20px;
+  }
+  .apresentacao-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .apresentacao-texto {
+    text-align: center;
+  }
+  .apresentacao h1 {
+    font-size: 36px;
+  }
+  .apresentacao p {
+    margin: 0 auto 20px;
+  }
+  .foto-moldura {
+    width: 230px;
+    height: 230px;
+  }
+}
+
+/* 04. HOME — portfólio SESI/SENAI e cartões */
+
+.portfolio {
+  width: 95%;
+  max-width: 1200px;
+  margin: 55px auto 40px;
+  padding: 20px 30px 25px;
+  background-color: #FAD5E2;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.portfolio > h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 34px;
+  font-weight: 700;
+  color: #F96897;
+  margin: 0 0 5px;
+}
+
+.portfolio > p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  margin: 0 0 18px;
+  color: #222;
+}
+.portfolio .opcoes {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  margin: 0;
+}
+
+.portfolio .cartao {
+  display: flex;
+  flex: 1 1 320px;
+  flex-direction: column;
+  max-width: 500px;
+  min-height: 170px;
+  padding: 20px;
+
+  background: #2C4D8A;
+  border-radius: 14px;
+  text-decoration: none;
+  text-align: left;
+  color: white;
+}
+
+.portfolio .cartao-conteudo {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.portfolio .cartao h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 30px;
+  color: white;
+  margin: 0 0 6px;
+}
+
+.portfolio .cartao p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  line-height: 1.4;
+  color: white;
+  margin: 0;
+  max-width: 280px;
+}
+
+.portfolio .acessar-cartao {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 20px;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.portfolio .seta-cartao {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #FFE2EC;
+  color: #2C4D8A;
+  font-size: 24px;
+}
+
+@media (max-width: 768px) {
+  .portfolio .cartao {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+}
+
+/* 06. LOGIN — tela, formulário e mensagens*/
 
 .pagina-login {
   display: flex;
@@ -115,6 +362,15 @@ body {
   align-items: center;
   min-height: 75vh;
   padding: 20px;
+}
+
+.pagina-login {
+  width: 100%;
+  min-height: 75vh;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .form-login {
@@ -140,11 +396,27 @@ body {
   font-size: 16px;
 }
 
+.form-login select {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  background-color: white;
+}
+
+.form-login textarea {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  resize: vertical;
+}
+
 .form-login button {
   padding: 12px;
   border: none;
   border-radius: 6px;
-  background-color: #333;
+  background-color: #F96897;
   color: white;
   cursor: pointer;
 }
@@ -158,31 +430,47 @@ body {
   color: #c62828;
 }
 
-.portfolio > .botao {
-  margin-top: 30px;
-  cursor: pointer;
+.form-page-stack {
+  width: 100%;
+  max-width: 462px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 16px;
 }
 
-.form-login select {
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 16px;
-  background-color: white;
+.form-page-stack > .botao-voltar { align-self: flex-start; }
+
+.form-page-stack > .form-login {
+  width: 100%;
+  max-width: none;
+  margin: 0;
 }
+
+/* 07. ADMIN — ações, exclusão e imagens */
 
 .botao-excluir {
-  margin-top: 15px;
+ display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   padding: 12px 20px;
-  background-color: #b3261e;
-  color: white;
+  background-color: #8e1e18;
+  color: #FFFFFF;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
   cursor: pointer;
+  transition: 0.2s ease;
 }
 
 .botao-excluir:hover {
   background-color: #8e1e18;
+  color: #FFFFFF;
+  transform: translateY(-2px);
 }
 
 .acoes-secao {
@@ -194,6 +482,7 @@ body {
 }
 
 .acoes-secao .botao,
+
 .acoes-secao .botao-excluir {
   display: inline-flex;
   justify-content: center;
@@ -213,15 +502,6 @@ body {
   color: white;
 }
 
-.form-login textarea {
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 16px;
-  font-family: Arial, sans-serif;
-  resize: vertical;
-}
-
 .acoes-admin {
   display: flex;
   justify-content: center;
@@ -230,33 +510,6 @@ body {
   margin-top: 15px;
 }
 
-.icone-usuario {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  color: #333;
-  background-color: #f5f5f5;
-  border: 1px solid #ddd;
-
-  text-decoration: none;
-  transition: 0.2s;
-}
-
-.icone-usuario:hover {
-  background-color: #e5e5e5;
-  transform: scale(1.05);
-}
-
-.usuario-logado {
-  background-color: #fe41cf;
-  color: white;
-  border-color: white;
-}
 .preview-imagem {
   margin-top: 15px;
   text-align: center;
@@ -284,3 +537,602 @@ body {
   border-radius: 8px;
   margin: 10px auto;
 }
+
+.campo-destaque {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 18px 0;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.campo-destaque input {
+  width: 17px;
+  height: 17px;
+  accent-color: #F96897;
+  cursor: pointer;
+}
+
+/* 08. SOBRE MIM — foto, textos e formação */
+
+.pagina-sobre {
+  background-color: #FEF3F5;
+  padding: 30px 25px 50px;
+  min-height: calc(100vh - 150px);
+}
+
+.sobre-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.pagina-sobre .page-back-row {
+  margin: 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.sobre-topo {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  align-items: start;
+  gap: 50px;
+}
+
+.sobre-foto {
+  width: 380px;
+  height: 350px;
+  border-radius: 18px;
+  overflow: hidden;
+  transform: translateX(-35px);
+}
+
+.sobre-foto img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sobre-conteudo {
+  min-width: 0;
+  text-align: left;
+}
+
+.sobre-etiqueta {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #F96897;
+}
+
+.sobre-conteudo h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 44px;
+  font-weight: 600;
+  color: #252525;
+  line-height: 1.1;
+  margin: 8px 0 12px;
+}
+
+.sobre-conteudo .sobre-descricao {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #444;
+  margin: 0 0 18px;
+}
+
+.sobre-identificacao {
+  background-color: #FAD5E2;
+  border-radius: 16px;
+  padding: 20px 24px;
+}
+
+.sobre-identificacao h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 30px;
+  font-weight: 700;
+  color: #2C4D8A;
+  margin: 0 0 12px;
+}
+
+.sobre-dados {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 18px;
+}
+
+.sobre-dados p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #333;
+  margin: 0;
+}
+
+.sobre-dados strong {
+  color: #2C4D8A;
+}
+
+.sobre-reflexao {
+  width: 100%;
+  padding: 25px 30px;
+  background-color: #FFFFFF;
+  border: 1px solid #F4D5DF;
+  border-radius: 16px;
+}
+
+.sobre-reflexao h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #2C4D8A;
+  margin: 0 0 15px;
+}
+
+.sobre-reflexao p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  line-height: 1.8;
+  color: #444;
+  margin: 0 0 14px;
+  text-align: left;
+}
+
+.sobre-reflexao p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .pagina-sobre {
+    padding: 25px 15px 40px;
+  }
+
+  .sobre-container {
+    gap: 20px;
+  }
+
+  .sobre-topo {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .sobre-foto {
+    width: 250px;
+    height: 310px;
+    margin: 0 auto;
+  }
+
+  .sobre-conteudo h1 {
+    font-size: 38px;
+  }
+
+  .sobre-identificacao {
+    padding: 20px;
+  }
+
+  .sobre-dados {
+    grid-template-columns: 1fr;
+  }
+
+  .sobre-reflexao {
+    padding: 22px 20px;
+  }
+}
+
+/* 09. PORTFÓLIO — projetos em destaque */
+
+.pagina-portfolio {
+  width: 100%;
+  min-height: 100vh;
+  padding: 50px 30px 90px;
+  background-color: #FEF3F5;
+}
+
+.portfolio-container {
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+.portfolio-apresentacao {
+  text-align: center;
+  margin: 50px auto 70px;
+  max-width: 700px;
+}
+
+.portfolio-apresentacao span {
+  color: #F96897;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.portfolio-apresentacao h1 {
+  font-size: 42px;
+  margin: 15px 0;
+}
+
+.portfolio-apresentacao p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: #555;
+}
+
+.portfolio-container > h2 {
+  font-size: 28px;
+  margin-bottom: 25px;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 25px;
+}
+
+.portfolio-card {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.portfolio-card-conteudo {
+  padding: 30px;
+}
+
+.portfolio-categoria {
+  font-size: 12px;
+  font-weight: 600;
+  color: #c2389b;
+  letter-spacing: 1px;
+}
+
+.portfolio-card h3 {
+  font-size: 24px;
+  margin: 12px 0;
+}
+
+.portfolio-card p {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  overflow-wrap: anywhere;
+}
+
+.portfolio-card a {
+  color: #b32685;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.portfolio-card a:hover {
+  text-decoration: underline;
+}
+
+.portfolio-trajetoria {
+  margin-top: 80px;
+  text-align: center;
+}
+
+.portfolio-trajetoria h2 {
+  font-size: 28px;
+  margin-bottom: 25px;
+}
+
+.portfolio-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.portfolio-links a {
+  padding: 15px 30px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #333;
+}
+
+.portfolio-links a:hover {
+  background: #fbeaf4;
+}
+
+/* 10. COMPONENTES — botão voltar e navegação */
+
+.botao-voltar {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background-color: #ffffff;
+  color: #333;
+  border: 1px solid #dddddd;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.botao-voltar:hover {
+  background-color: #fce7f5;
+  border-color: #d633a5;
+  color: #b32685;
+}
+
+.page-back-row {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 24px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.pagina-sobre > .page-back-row { max-width: 1150px; margin-bottom: 30px; }
+
+.botao-voltar { flex: 0 0 auto; white-space: nowrap; }
+
+
+/* PÁGINAS SESI E SENAI — ÁREAS E SEÇÕES */
+
+.pagina-areas {
+  width: 100%;
+  min-height: calc(100vh - 150px);
+  padding: 35px 25px 60px;
+  background-color: #FEF3F5;
+}
+
+.areas-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* BOTÃO VOLTAR */
+
+.pagina-areas .page-back-row {
+  margin-bottom: 30px;
+}
+
+/* CABEÇALHO */
+
+.areas-cabecalho {
+  margin-bottom: 30px;
+}
+
+.areas-titulo {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.areas-cabecalho h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: #252525;
+  margin: 0;
+}
+
+.areas-etiqueta {
+  display: inline-block;
+  padding: 6px 15px;
+  background-color: #FAD5E2;
+  border: 1px solid #F96897;
+  border-radius: 6px;
+
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #2C4D8A;
+}
+
+.areas-cabecalho p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  color: #444;
+  margin: 8px 0 0;
+}
+
+/* GRID DE CARTÕES */
+
+.areas-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 25px;
+
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+/* CARTÕES */
+
+.area-card {
+  min-height: 170px;
+  padding: 25px 20px;
+
+  background-color: #FAD5E2;
+  border: 1px solid transparent;
+  border-radius: 14px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  text-align: center;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+/* ÍCONES */
+
+.area-icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2C4D8A;
+}
+
+.area-icone svg {
+  width: 38px;
+  height: 38px;
+  stroke-width: 1.5;
+}
+
+/* TÍTULO DOS CARTÕES */
+
+.area-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #2C4D8A;
+  margin: 0;
+  max-width: 270px;
+}
+
+/* PERÍODO DAS SEÇÕES */
+
+.area-card p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  color: #555;
+  margin: 0;
+}
+
+/* EFEITO HOVER */
+
+.area-card:hover {
+  background-color: #F7C5D7;
+  border-color: #F96897;
+  transform: translateY(-3px);
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 600px) {
+  .pagina-areas {
+    padding: 25px 15px 40px;
+  }
+
+  .areas-cabecalho h1 {
+    font-size: 34px;
+  }
+
+  .areas-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .area-card {
+    min-height: 145px;
+  }
+}
+
+/* 11. FOOTER — rodapé */
+
+.footer {
+  width: 100%;
+  background-color: #FDD5E2;
+  padding: 12px 30px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.footer-logo {
+  font-size: 18px;
+  font-weight: bold;
+  color: #F96897;
+}
+
+.footer-container p {
+  font-size: 12px;
+  color: #513a48;
+  margin: 0;
+}
+
+/* 12. RESPONSIVIDADE — telas menores */
+
+@media (max-width: 768px) {
+  .portfolio {
+    width: 95%;
+    padding: 20px 15px;
+  }
+  .opcoes {
+    gap: 15px;
+  }
+  .cartao {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .pagina-sobre {
+    padding: 45px 20px;
+  }
+  .sobre-container {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+  .sobre-foto {
+    max-width: 350px;
+    margin: 0 auto;
+  }
+  .sobre-foto img {
+    height: 400px;
+  }
+  .sobre-conteudo h1 {
+    font-size: 30px;
+  }
+
+}
+
+@media (max-width: 768px) {
+  .pagina-portfolio {
+    padding: 30px 20px 60px;
+  }
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+  .portfolio-apresentacao h1 {
+    font-size: 32px;
+  }
+
+}
+
+@media (max-width: 600px) {
+  .footer-container {
+    flex-direction: column;
+    gap: 5px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .pagina-login { padding: 28px 16px; }
+  .form-page-stack { max-width: 100%; }
+  .pagina-sobre { padding: 40px 20px; }
+}
+

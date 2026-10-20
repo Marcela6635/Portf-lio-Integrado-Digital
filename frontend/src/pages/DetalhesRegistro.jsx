@@ -1,9 +1,9 @@
+import BotaoVoltar from "../components/BotaoVoltar";
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 function DetalhesRegistro() {
   const { id } = useParams();
-  const navigate = useNavigate();
 
   const [registro, setRegistro] = useState(null);
   const [carregando, setCarregando] = useState(true);
@@ -44,6 +44,7 @@ function DetalhesRegistro() {
 
   return (
     <main className="portfolio">
+      <div className="page-back-row"><BotaoVoltar destino={registro?.secao_id ? `/registros/${registro.secao_id}` : "/"} /></div>
       <h1>{registro.titulo}</h1>
       <p>{registro.conteudo}</p>
 
@@ -69,10 +70,6 @@ function DetalhesRegistro() {
             </div>
         ))
       )}
-
-      <button className="botao" onClick={() => navigate(-1)}>
-        Voltar
-      </button>
     </main>
   );
 }

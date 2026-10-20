@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import BotaoVoltar from "../components/BotaoVoltar";
 
 function CadastrarSecao() {
   const navigate = useNavigate();
@@ -52,45 +53,48 @@ function CadastrarSecao() {
 
   return (
     <main className="pagina-login">
-      <form className="form-login" onSubmit={cadastrar}>
-        <h1>Cadastrar Seção</h1>
+      <div className="form-page-stack">
+        <BotaoVoltar destino="/admin/secoes" />
+        <form className="form-login" onSubmit={cadastrar}>
+          <h1>Cadastrar Seção</h1>
 
-        <label>Nome da seção</label>
-        <input
-          value={nome}
-          onChange={(e) => setNome(e.target.value)}
-          required
-        />
+          <label>Nome da seção</label>
+          <input
+            value={nome}
+            onChange={(e) => setNome(e.target.value)}
+            required
+          />
 
-        <label>Origem</label>
-        <select
-          value={origem}
-          onChange={(e) => setOrigem(e.target.value)}
-        >
-          <option value="SESI">SESI</option>
-          <option value="SENAI">SENAI</option>
-        </select>
+          <label>Origem</label>
+          <select
+            value={origem}
+            onChange={(e) => setOrigem(e.target.value)}
+          >
+            <option value="SESI">SESI</option>
+            <option value="SENAI">SENAI</option>
+          </select>
 
-        <label>Área ou unidade curricular</label>
-        <input
-          value={area_unidade}
-          onChange={(e) => setAreaUnidade(e.target.value)}
-          required
-        />
+          <label>Área ou unidade curricular</label>
+          <input
+            value={area_unidade}
+            onChange={(e) => setAreaUnidade(e.target.value)}
+            required
+          />
 
-        <label>Período</label>
-        <select
-          value={periodo}
-          onChange={(e) => setPeriodo(e.target.value)}
-        >
-          <option value="anual">Anual</option>
-          <option value="bimestral">Bimestral</option>
-        </select>
+          <label>Período</label>
+          <select
+            value={periodo}
+            onChange={(e) => setPeriodo(e.target.value)}
+          >
+            <option value="anual">Anual</option>
+            <option value="bimestral">Bimestral</option>
+          </select>
 
-        <button type="submit">Cadastrar seção</button>
+          <button type="submit">Cadastrar seção</button>
 
-        {mensagem && <p>{mensagem}</p>}
-      </form>
+          {mensagem && <p>{mensagem}</p>}
+        </form>
+        </div>
     </main>
   );
 }

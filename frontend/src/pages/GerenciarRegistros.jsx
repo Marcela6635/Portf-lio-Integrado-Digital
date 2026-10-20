@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import BotaoVoltar from "../components/BotaoVoltar";
 
 function GerenciarRegistros() {
   const [registros, setRegistros] = useState([]);
@@ -73,6 +74,7 @@ function GerenciarRegistros() {
 
   return (
     <main className="portfolio">
+    <div className="page-back-row"><BotaoVoltar destino="/admin" /></div>
       <h1>Gerenciar Registros</h1>
 
       <Link to="/admin/registros/novo" className="botao">
@@ -110,7 +112,6 @@ function GerenciarRegistros() {
         </div>
       )}
 
-      <Link to="/admin">Voltar ao painel</Link>
     </main>
   );
 }

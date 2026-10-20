@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import BotaoVoltar from "../components/BotaoVoltar";
 
 function EditarSecao() {
   const { id } = useParams();
@@ -86,6 +87,8 @@ function EditarSecao() {
 
   return (
     <main className="pagina-login">
+      <div className="form-page-stack">
+        <BotaoVoltar destino="/admin/secoes" />
       <form className="form-login" onSubmit={salvarAlteracoes}>
         <h1>Editar Seção</h1>
 
@@ -125,6 +128,7 @@ function EditarSecao() {
 
         {mensagem && <p>{mensagem}</p>}
       </form>
+      </div>
     </main>
   );
 }

@@ -1,10 +1,10 @@
+import BotaoVoltar from "../components/BotaoVoltar";
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 function Registros() {
   const { id } = useParams();
-  const navigate = useNavigate();
 
   const [registros, setRegistros] = useState([]);
   const [secao, setSecao] = useState(null);
@@ -71,6 +71,7 @@ function Registros() {
 
   return (
     <main className="portfolio">
+      <div className="page-back-row"><BotaoVoltar destino={secao?.area_unidade && secao?.origem ? `/${secao.origem.toLowerCase()}/${encodeURIComponent(secao.area_unidade)}` : "/"} /></div>
       <h1>{secao?.nome}</h1>
 
       <p>Período: {secao?.periodo}</p>
@@ -90,13 +91,6 @@ function Registros() {
       ) : (
         mostrarRegistros(registros)
       )}
-
-      <button
-        className="botao"
-        onClick={() => navigate(-1)}
-      >
-        Voltar
-      </button>
     </main>
   );
 }

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import BotaoVoltar from "../components/BotaoVoltar";
 
 function GerenciarMateriais() {
   const [materiais, setMateriais] = useState([]);
@@ -74,6 +75,7 @@ function GerenciarMateriais() {
 
   return (
     <main className="portfolio">
+    <div className="page-back-row"><BotaoVoltar destino="/admin" /></div>
       <h1>Gerenciar Materiais</h1>
 
       <Link
@@ -123,8 +125,6 @@ function GerenciarMateriais() {
           </div>
         ))}
       </div>
-
-      <Link to="/admin">Voltar ao painel</Link>
     </main>
   );
 }
